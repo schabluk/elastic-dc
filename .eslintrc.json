@@ -1,0 +1,26 @@
+{
+    "env": {
+        "browser": true,
+        "es6": true
+    },
+    "extends": "eslint:recommended",
+    "parserOptions": {
+        "ecmaFeatures": {
+            "experimentalObjectRestSpread": true,
+            "jsx": true
+        },
+        "sourceType": "module"
+    },
+    "plugins": [
+        "react"
+    ],
+    "rules": {
+        "indent": ["error", 2],
+        "linebreak-style": ["error", "unix"],/*
+        "quotes": ["error", "double"],*/
+        "semi": ["error", "never"],
+        "no-unused-vars": [0], // disabled because of import React in JSX files.
+        "no-console": [1],
+        "no-debugger": [1]
+    }
+}
