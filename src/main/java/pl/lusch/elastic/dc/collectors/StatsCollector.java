@@ -1,5 +1,7 @@
 package pl.lusch.elastic.dc.collectors;
 
+import java.util.concurrent.ScheduledFuture;
+
 import org.elasticsearch.client.Client;
 import org.elasticsearch.common.inject.Inject;
 import org.elasticsearch.common.settings.Settings;
@@ -18,7 +20,7 @@ public class StatsCollector extends BaseCollector {
 	protected void getCollectorProperties() {
 		// TODO get properties
 	}
-	
+
 	@Override
 	public void sheduleCollectionJob() {
 		
@@ -30,9 +32,11 @@ public class StatsCollector extends BaseCollector {
 		};
 		
 		// run job every 5 seconds
-		(new EveryFiveSeconds(job)).getJobHandle();
+		ScheduledFuture<?> jobHandle = (new EveryFiveSeconds(job)).getJobHandle();
 		
-		logger.info("Stats Collector scheduled");
+		if(jobHandle.isDone()) {
+			logger.info("The job is done");
+		}
 	}
 
 }
