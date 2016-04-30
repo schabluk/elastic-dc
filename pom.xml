@@ -4,7 +4,7 @@
 
   <groupId>pl.lusch.elastic.dc</groupId>
   <artifactId>elastic-dc</artifactId>
-  <version>0.0.3</version>
+  <version>0.0.4</version>
   <packaging>jar</packaging>
   <name>elastic-dc</name>
   <description>Data Collector for ES</description>

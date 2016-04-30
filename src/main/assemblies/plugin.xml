@@ -13,6 +13,14 @@
       <source>${project.build.directory}/classes/plugin-descriptor.properties</source>
       <outputDirectory>/</outputDirectory>
     </file>
+    <file>
+      <source>${basedir}/_site/index.html</source>
+      <outputDirectory>/_site</outputDirectory>
+    </file>
+    <file>
+      <source>${basedir}/_site/bundle.js</source>
+      <outputDirectory>/_site</outputDirectory>
+    </file>
   </files>
   <includeBaseDirectory>false</includeBaseDirectory>
   <dependencySets>
