@@ -2,7 +2,6 @@ import React from 'react'
 
 import Health from './health'
 import NodeInfo from './nodeInfo'
-import NodeStats from './nodeStats'
 
 const Main = ({es}) => (
   <div className="container">
