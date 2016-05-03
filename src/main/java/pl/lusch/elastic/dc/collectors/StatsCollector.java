@@ -72,7 +72,7 @@ public class StatsCollector extends BaseCollector {
 								.actionGet();
 							
 							logger.info(
-								"Collected statistics of '" + nodeName + "' node to: " + re.getIndex() + "/" + re.getType() + "/" + re.getId() + "."
+								"Collected stats at: " + re.getIndex() + "/" + re.getType() + "/" + re.getId() + "."
 							);
 						}
 					}
