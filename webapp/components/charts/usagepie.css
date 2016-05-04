@@ -1,0 +1,16 @@
+.nv-pieChart .nv-pie-title {
+  font-size: 10px !important;
+  font-family: Lato,"Helvetica Neue",Arial,Helvetica,sans-serif;
+  font-weight: 700;
+  fill: #696969;
+}
+
+/** Usage PieChart */
+.nvd3.nv-pie .nv-pie-title {
+  fill: #696969;
+}
+
+.nv-legend-text,
+.nv-label {
+  font-size: 10px !important;
+}
