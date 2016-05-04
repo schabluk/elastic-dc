@@ -3,6 +3,17 @@ body {
   font-family: sans-serif;
 }
 
+a {
+  outline: 0 !important;
+}
+
+/**
+ * NVD3 charts
+ */
+.nvd3-svg {
+  width: 100%;
+}
+
 .navbar, .panel, .panel-heading, .list-group > .list-group-item {
   border-radius: 0px;
 }

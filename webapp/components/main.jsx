@@ -2,6 +2,7 @@ import React from 'react'
 
 import Health from './health'
 import NodeInfo from './nodeInfo'
+import NodeStats from './nodeStats'
 
 const Main = ({es}) => (
   <div className="container">
@@ -21,10 +22,11 @@ const Main = ({es}) => (
       <div className="col-md-4">
         <ul className="list-group">
           <li className="list-group-item">
-            <small>Cluster status</small>
+            Cluster status
             <Health es={es} />
           </li>
           <NodeInfo es={es} />
+          <NodeStats es={es} />
         </ul>
       </div>
       <div className="col-md-8">
