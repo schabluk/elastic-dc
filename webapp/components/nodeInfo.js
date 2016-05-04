@@ -26,7 +26,7 @@ class NodeInfo extends React.Component {
             <p className="detail">&nbsp;<span className="pull-right">connected to:</span></p>
             <p className="detail">&nbsp;<span className="pull-right">version:</span></p>
             <p className="detail">&nbsp;<span className="pull-right">os:</span></p>
-            <p className="detail">&nbsp;<span className="pull-right">cpu:</span></p>
+            <p className="detail">&nbsp;<span className="pull-right">cores:</span></p>
             <p className="detail">&nbsp;<span className="pull-right">jvm:</span></p>
             <p className="detail">&nbsp;</p>
           </div>
@@ -36,7 +36,7 @@ class NodeInfo extends React.Component {
             </p>
             <p className="detail"><code>{this.state.version}</code></p>
             <p className="detail"><code>{this.state.os.name} {this.state.os.version}</code></p>
-            <p className="detail"><code>{this.state.os.available_processors}</code></p>
+            <p className="detail"><code>{this.state.os.available_processors} ({this.state.os.allocated_processors} alloc)</code></p>
             <p className="detail"><code>{this.state.jvm.version}</code></p>
             <p className="detail"><code>{this.state.jvm.vm_name.substring(0, 16)}</code></p>
           </div>
