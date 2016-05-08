@@ -41,6 +41,7 @@ module.exports = {
         // style-loader deals with require statements in our JavaScript.
         test: /\.css$/, loaders: ['style', 'css'], include: PATHS.app
       },
+      //{test: /nvd3\/src\/css\/\.css$/, loaders: ['style', 'css']},
       // Bootstrap loaders
       {test: /\.less$/, loader: "style!css!less"},
       // **IMPORTANT** This is needed so that each bootstrap js file required by
