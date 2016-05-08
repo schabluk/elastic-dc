@@ -20,7 +20,7 @@ class NodeInfo extends React.Component {
       )
     }
     return (
-      <li className="list-group-item container-fluid">
+      <div className="container-fluid">
         <div className="row">
           <div className="col-xs-5" style={{paddingRight: '3px'}}>
             <p className="detail">&nbsp;<span className="pull-right">connected to:</span></p>
@@ -41,7 +41,7 @@ class NodeInfo extends React.Component {
             <p className="detail"><code>{this.state.jvm.vm_name.substring(0, 16)}</code></p>
           </div>
         </div>
-      </li>
+      </div>
     )
   }
   beat() {

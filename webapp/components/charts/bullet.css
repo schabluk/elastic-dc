@@ -1,0 +1,20 @@
+
+.bullet-chart ,
+.bullet-chart > svg.nvd3-svg {
+  height: 40px;
+  width: 100%;
+}
+
+.nvd3.nv-bullet .nv-markerTriangle {
+  stroke: #000000;
+  fill: #FF3300;
+  stroke-width: 0px;
+}
+
+.nv-bulletChart .nv-tick > text,
+.nv-bulletChart .nv-titles .nv-title,
+.nv-bulletChart .nv-titles .nv-subtitle {
+  font-size: 10px;
+  font-family: Lato,"Helvetica Neue",Arial,Helvetica,sans-serif;
+  fill: #696969;
+}

@@ -1,49 +1,53 @@
-AreaChart = React.createClass({
-  getDefaultProps() {
-    return {
-      tips: true,
-      color: ["#1F77B4", "#E8E8E8"]
-    }
-  },
-  componentDidUpdate() {
-    d3.select(this.refs.svg).datum(this.props.datum).call(this.chart)
-  },
-  componentDidMount() {
-    var self = this
+import React from 'react'
+import d3 from 'd3'
+import nvd3 from 'nvd3'
+import moment from 'moment'
 
-    nv.addGraph(function() {
-      self.chart = nv.models.stackedAreaChart()
-        .x(function(d) { return d[0] })   //We can modify the data accessor functions...
-        .y(function(d) { return d[1] })   //...in case your data is formatted differently.
+import './area.css'
+
+class AreaChart extends React.Component {
+  constructor(props) {
+    super(props)
+  }
+  componentDidMount() {
+
+    nvd3.addGraph(() => {
+      this.chart = nvd3.models.stackedAreaChart()
+        .x((d) => { return d[0] })
+        .y((d) => { return d[1] })
         .showYAxis(false)
         .showXAxis(false)
         .showLegend(false)
         .showControls(false)
         .clipEdge(false)
         .margin({"left":0,"right":0,"top":5,"bottom":0})
-        .color(self.props.color)
+        .color(this.props.color)
         //.height(50)
-        .width(280) // 100% when not set
+        //.width(280) // 100% when not set
+
+      this.chart.tooltip.enabled(this.props.tooltip)
 
       // Format x-axis labels with custom function.
       // https://github.com/mbostock/d3/wiki/Time-Formatting
-      self.chart.xAxis.tickFormat(function(d) {
-         return moment(d).fromNow()
+      this.chart.xAxis.tickFormat((d) => {
+        return moment(d).fromNow()
       })
-      self.chart.yAxis.tickFormat(d3.format(',.0f'))
+      this.chart.yAxis.tickFormat(d3.format(',.0f'))
 
-      d3.select(self.refs.svg)
-        .datum(self.props.datum)
+      d3.select(this.refs.svg)
+        .datum(this.props.datum)
         .transition()
         .duration(300)
-        .call(self.chart)
+        .call(this.chart)
 
-      //nv.utils.windowResize(self.chart.update)
+      nvd3.utils.windowResize(this.chart.update)
 
-      return self.chart
+      return this.chart
     })
-
-  },
+  }
+  componentDidUpdate() {
+    d3.select(this.refs.svg).datum(this.props.datum).call(this.chart)
+  }
   render() {
     return (
       <div className="area-chart">
@@ -51,4 +55,16 @@ AreaChart = React.createClass({
       </div>
     )
   }
-})
+}
+
+AreaChart.defaultProps = {
+  title: 'Usage History',
+  tips: true,
+  color: ["#1F77B4", "#E8E8E8"],
+  legend: [{key: "legend"}]
+}
+
+AreaChart.propTypes = {
+}
+
+export default AreaChart

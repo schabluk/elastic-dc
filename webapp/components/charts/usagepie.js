@@ -12,14 +12,14 @@ class UsagePie extends React.Component {
 
     nvd3.addGraph(() => {
       this.chart = nvd3.models.pieChart()
-          .x(function(d) { return d.label })
-          .y(function(d) { return d.value })
-          .showLabels(true)
-      this.chart.tooltip.enabled(false)
+        .x((d) => { return d.label })
+        .y((d) => { return d.value })
+        .showLabels(true)
+      this.chart.tooltip.enabled(this.props.tooltip)
       this.chart.color(this.props.color)
       this.chart.showLegend(false)
       //this.chart.legendPosition("bottom")
-      this.chart.labelType(function(d, i, values) {
+      this.chart.labelType((d, i, values) => {
         return values.value
       })
       this.chart.growOnHover(false)
@@ -36,7 +36,7 @@ class UsagePie extends React.Component {
         .duration(350)
         .call(this.chart)
 
-      //nvd3.utils.windowResize(this.chart.update)
+      nvd3.utils.windowResize(this.chart.update)
 
       return this.chart
     })

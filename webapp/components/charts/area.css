@@ -1,0 +1,12 @@
+
+.area-chart {/**
+  position: absolute;
+*/
+  bottom: 0px;
+  height: 40px;
+  width: 100%;
+}
+.area-chart > svg.nvd3-svg {
+  height: 40px;
+  width: 100%;
+}
