@@ -15,10 +15,12 @@ class NodeStats extends React.Component {
       beatRate: this.props.beatRate,
       datum: {
         mem: [],
+        jvm: [],
         cpu: []
       },
       histm: {
         mem: [],
+        jvm: [],
         cpu: []
       }
     }
@@ -44,8 +46,8 @@ class NodeStats extends React.Component {
           </div>
           <div className="col-xs-6 chart" style={{paddingLeft: '3px'}}>
             <UsagePie
-              title="MEM"
-              datum={this.state.datum.mem}
+              title="HEAP"
+              datum={this.state.datum.jvm}
               color={["#5B98C3", "#f4f4f4"]}
               legend={[{key: "usage"}, {key: "free"}]}  />
           </div>
@@ -60,10 +62,10 @@ class NodeStats extends React.Component {
         </div>
         <div className="row">
           <div className="col-xs-12 chart" style={{padding: '3px'}}>
-            <small>Memory</small>
+            <small>Heap</small>
             <AreaChart
               color={["#1F77B4", "#E8E8E8"]}
-              datum={this.state.histm.mem} />
+              datum={this.state.histm.jvm} />
           </div>
         </div>
         <div className="row">
@@ -83,6 +85,11 @@ class NodeStats extends React.Component {
         }, {
           "label": "idle", "value": (100 - stat.os.cpu_percent)
         }],
+        jvm: [{
+          "label": "used", "value": stat.jvm.mem.heap_used_percent
+        }, {
+          "label": "idle", "value": 100-stat.jvm.mem.heap_used_percent
+        }],
         mem: [{
           "label": "used", "value": stat.os.mem.used_percent
         }, {
@@ -94,6 +101,12 @@ class NodeStats extends React.Component {
           "key" : "Used" ,
           "values" : _.map(hist, (entry, i) => {
             return [entry._source.timestamp, entry._source.os.cpu_percent]
+          })
+        }],
+        jvm: [{
+          "key" : "Used" ,
+          "values" : _.map(hist, (entry, i) => {
+            return [entry._source.timestamp, entry._source.jvm.mem.heap_used_percent]
           })
         }],
         mem: [{
@@ -139,7 +152,7 @@ class NodeStats extends React.Component {
                   },
                   "_source": {
                     "include": [
-                      "name", "attributes", "timestamp", "os", "fs"
+                      "name", "attributes", "timestamp", "os", "fs", "jvm"
                     ]
                   }
                 }
@@ -157,7 +170,7 @@ class NodeStats extends React.Component {
       this.updateDatum(stat, hist, disk)
 
     }, (err) => {
-      console.log(err)
+      //console.log(err)
     })
   }
   componentDidMount() {
