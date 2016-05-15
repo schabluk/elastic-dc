@@ -8,9 +8,6 @@ import './bullet.css'
 class BulletChart extends React.Component {
   constructor(props) {
     super(props)
-
-    console.log(props)
-
     this.bytesToSize = this.bytesToSize.bind(this)
   }
   bytesToSize(bytes) {
