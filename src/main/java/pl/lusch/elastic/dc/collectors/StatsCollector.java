@@ -18,11 +18,32 @@ import pl.lusch.elastic.dc.scheduler.EveryFiveSeconds;
 
 public class StatsCollector extends BaseCollector {
 	
+	private final String indexName = "nodes";
 	private final String indexType = "stats";
 	
     @Inject	
     public StatsCollector(Settings settings, RestController controller, Client client) {
 		super(settings, client);
+		
+		curl -XDELETE 'localhost:9200/nodes?pretty'
+		/*
+		curl -XPOST 'localhost:9200/nodes?pretty' -d '{
+		  "mappings": {
+		    "stats": {
+		      "properties": {
+		        "timestamp": {
+		          "type": "date", "index": "not_analyzed"
+		        },
+		        "host": {
+		          "type": "string", "index": "not_analyzed"
+		        },
+		        "name": {
+		          "type": "string", "index": "not_analyzed"
+		        }
+		      }
+		    }
+		  }
+		}'*/
 	}
 
 	@Override
@@ -41,7 +62,7 @@ public class StatsCollector extends BaseCollector {
 
 				// Prepare and configure statistics request to ES
 				NodesStatsRequest nodesStatsRequest = new NodesStatsRequest();
-				nodesStatsRequest.indices(false).os(true).fs(true).threadPool(true);
+				nodesStatsRequest.indices(false).os(true).jvm(true).fs(true).threadPool(true);
 				
 				// Request for stats
 				clusterClient.admin().cluster().nodesStats(nodesStatsRequest, new ActionListener<NodesStatsResponse>() {
@@ -66,7 +87,7 @@ public class StatsCollector extends BaseCollector {
 							String nodeName = node.getString("name");
 							
 							// Index node statistics back to ES
-							IndexResponse re = clusterClient.prepareIndex("nodes", indexType)
+							IndexResponse re = clusterClient.prepareIndex(indexName, indexType)
 								.setSource(node.toString())
 								.execute()
 								.actionGet();
