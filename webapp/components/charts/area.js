@@ -25,7 +25,7 @@ class AreaChart extends React.Component {
         //.height(50)
         //.width(280) // 100% when not set
 
-      this.chart.tooltip.enabled(this.props.tooltip)
+      //this.chart.tooltip.enabled(this.props.tooltip)
 
       // Format x-axis labels with custom function.
       // https://github.com/mbostock/d3/wiki/Time-Formatting

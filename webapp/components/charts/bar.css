@@ -1,0 +1,10 @@
+.bar-chart,
+.bar-chart > svg.nvd3-svg {
+  height: 250px;
+  width: 100%;
+}
+.bar-chart .nvd3 text {
+  font-size: 0.7em !important;
+  font-family: Lato,"Helvetica Neue",Arial,Helvetica,sans-serif;
+  fill: #696969;
+}

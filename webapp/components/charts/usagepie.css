@@ -1,7 +1,7 @@
-.nv-pieChart .nv-pie-title {
-  font-size: 10px !important;
+.nv-pieChart .nv-pie-title,
+.nv-pieChart .nvd3 text {
+  font-size: 0.8em !important;
   font-family: Lato,"Helvetica Neue",Arial,Helvetica,sans-serif;
-  font-weight: 700;
   fill: #696969;
 }
 
