@@ -16,7 +16,7 @@ class NodeInfo extends React.Component {
   render() {
     if(!this.state.ip) {
       return (
-        <li className="list-group-item"><small>No info</small></li>
+        <small>No info</small>
       )
     }
     return (

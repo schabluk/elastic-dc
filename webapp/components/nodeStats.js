@@ -31,7 +31,7 @@ class NodeStats extends React.Component {
   render() {
     if(_.isEmpty(this.state.datum.mem) || _.isEmpty(this.state.datum.cpu)) {
       return (
-        <li className="list-group-item"><small>No stats</small></li>
+        <small>No stats</small>
       )
     }
     return (
