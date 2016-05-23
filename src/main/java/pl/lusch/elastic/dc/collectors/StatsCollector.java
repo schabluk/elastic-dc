@@ -24,26 +24,6 @@ public class StatsCollector extends BaseCollector {
     @Inject	
     public StatsCollector(Settings settings, RestController controller, Client client) {
 		super(settings, client);
-		
-		/*
-		curl -XDELETE 'localhost:9200/nodes?pretty'
-		curl -XPOST 'localhost:9200/nodes?pretty' -d '{
-		  "mappings": {
-		    "stats": {
-		      "properties": {
-		        "timestamp": {
-		          "type": "date", "index": "not_analyzed"
-		        },
-		        "host": {
-		          "type": "string", "index": "not_analyzed"
-		        },
-		        "name": {
-		          "type": "string", "index": "not_analyzed"
-		        }
-		      }
-		    }
-		  }
-		}'*/
 	}
 
 	@Override
