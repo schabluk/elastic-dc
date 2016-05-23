@@ -25,8 +25,8 @@ public class StatsCollector extends BaseCollector {
     public StatsCollector(Settings settings, RestController controller, Client client) {
 		super(settings, client);
 		
-		curl -XDELETE 'localhost:9200/nodes?pretty'
 		/*
+		curl -XDELETE 'localhost:9200/nodes?pretty'
 		curl -XPOST 'localhost:9200/nodes?pretty' -d '{
 		  "mappings": {
 		    "stats": {
